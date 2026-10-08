@@ -6,7 +6,6 @@ BASE_URL = "https://127.0.0.1:2443"
 
 @pytest.fixture(scope="module", autouse=True)
 def mock_redfish_api():
-    """Эмуляция ответов реального веб-сервера Redfish API OpenBMC на сетевые запросы requests"""
     with patch("requests.Session.post") as mock_post, patch("requests.Session.get") as mock_get:
         
         def side_effect_post(url, json=None, **kwargs):
